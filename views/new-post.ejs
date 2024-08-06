@@ -1,0 +1,39 @@
+<%- include("partials/header.ejs") %>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/new-posts.css">
+    <title>Create New Post</title>
+</head>
+<body>
+<div class="new-post-container">
+    <header class="new-post-header">
+        <h1>Blog</h1>
+        <button class="sign-up-btn">Sign up</button>
+    </header>
+    <div class="new-post-content">
+        <input type="text" class="post-title" placeholder="Title">
+        <div class="post-options">
+            <button class="post-option-btn">Add tags (5 max)</button>
+            <button class="post-option-btn">Set feature image</button>
+            <button class="post-option-btn">Add canonical link</button>
+        </div>
+        <textarea class="post-description" placeholder="Write your description here..."></textarea>
+        <div class="post-body">
+            <div class="post-author">
+            </div>
+            <textarea class="post-content" placeholder="Write your post here..."></textarea>
+        </div>
+        <div class="post-footer">
+            <button class="publish-btn">Publish</button>
+            <span class="word-count">Word count: 0</span>
+        </div>
+    </div>
+</div>
+<script src="/js/wordcount.js"></script>
+</body>
+</html>

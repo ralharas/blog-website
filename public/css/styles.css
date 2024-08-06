@@ -1,0 +1,135 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: white;
+    color: black;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navbar-brand {
+    font-size: 1.5em;
+    font-weight: bold;
+    position: absolute;
+    left: 20px; 
+}
+
+#navbar-menu {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px; 
+}
+
+.navbar-menu li {
+    margin: 0;
+}
+
+.navbar-menu a {
+    color: black;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.navbar-menu li:hover {
+    text-decoration: underline;
+}
+
+.navbar-signin {
+    position: absolute;
+    right: 20px;
+}
+
+.navbar-signin .btn {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.navbar-signin .btn:hover {
+    background-color: #0056b3;
+}
+
+.welcome-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.welcome-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.welcome-text {
+    margin-top: 20px;
+}
+
+.welcome-text h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.welcome-text p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.welcome-text .btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.welcome-text .btn:hover {
+    background-color: #0056b3;
+}
+
+
+.btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.mt-4 {
+    text-align: center;
+    margin: 60px 0;
+}
+
