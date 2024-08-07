@@ -20,14 +20,18 @@
 <div class="container mt-4">
     <h1>Blog Posts</h1>
     <a href="/new-post" class="btn btn-primary mb-4">Create a New Post</a>
-    <ul>
-        <% posts.forEach(post => { %>
-            <li>
-                <a href="/post/<%= post.id %>"><%= post.title %></a>
-                <p><%= post.description %></p>
-            </li>
-       <% }) %>
-    </ul>
+    <div class="post-list">
+        <% posts.forEach((post, index) => { %>
+            <div class="post-item">
+                <img src="/assets/<%= images[index % images.length] %>" alt="Post Image">
+                <div class="post-content">
+                    <h3><%= post.title %></h3>
+                    <p><%= post.content.substring(0, 100) %>...</p>
+                    <a href="/post/<%= post.id %>" class="btn btn-primary">Read more</a>
+                </div>
+            </div>
+        <% }) %>
+    </div>
 </div>  
 </body>
 </html>

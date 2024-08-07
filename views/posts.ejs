@@ -5,24 +5,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/posts.css">
     <title>Blog Posts</title>
 </head>
 <body>
     <div class="container">
         <h1>Blog Posts</h1>
-        <% if (posts.length === 0) { %>
-            <p>No posts available. <a href="/new-post">Create a new post</a></p>
-        <% } else { %>
-            <ul>
-                <% posts.forEach(post => { %>
-                    <li>
-                        <a href="/post/<%= post.id %>"><%= post.title %></a>
-                        <p><%= post.content.substring(0, 100) %>...</p>
-                    </li>
+        <a href="/new-post" class="btn btn-primary mb-4">Create a New Post</a>
+        <div class="post-list">
+            <% if (posts.length === 0) { %>
+                <p>No posts available. <a href="/new-post">Create a new post</a></p>
+            <% } else { %>
+                <% posts.forEach((post, index) => { %>
+                    <div class="post-item">
+                        <img src="/assets/<%= post.image %>" alt="Post Image">
+                        <div class="post-content">
+                            <h3><%= post.title %></h3>
+                            <p><%= post.content.substring(0, 100) %>...</p>
+                            <a href="/post/<%= post.id %>" class="btn btn-primary">Read more</a>
+                        </div>
+                    </div>
                 <% }) %>
-            </ul>
-        <% } %>
+            <% } %>
+        </div>
     </div>
 </body>
 </html>
