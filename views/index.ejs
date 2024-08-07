@@ -20,6 +20,14 @@
 <div class="container mt-4">
     <h1>Blog Posts</h1>
     <a href="/new-post" class="btn btn-primary mb-4">Create a New Post</a>
+    <ul>
+        <% posts.forEach(post => { %>
+            <li>
+                <a href="/post/<%= post.id %>"><%= post.title %></a>
+                <p><%= post.description %></p>
+            </li>
+       <% }) %>
+    </ul>
 </div>  
 </body>
 </html>

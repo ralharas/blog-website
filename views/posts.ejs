@@ -1,0 +1,28 @@
+<%- include("partials/header.ejs") %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Blog Posts</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Blog Posts</h1>
+        <% if (posts.length === 0) { %>
+            <p>No posts available. <a href="/new-post">Create a new post</a></p>
+        <% } else { %>
+            <ul>
+                <% posts.forEach(post => { %>
+                    <li>
+                        <a href="/post/<%= post.id %>"><%= post.title %></a>
+                        <p><%= post.content.substring(0, 100) %>...</p>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } %>
+    </div>
+</body>
+</html>
