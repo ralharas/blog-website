@@ -31,11 +31,11 @@
 
 .new-post-content input.post-title {
     width: 100%;
-    padding: 15px; /* Increased padding for larger input field */
+    padding: 15px; 
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    font-size: 1.2em; /* Increased font size for title */
+    font-size: 1.2em; 
     box-sizing: border-box;
 }
 

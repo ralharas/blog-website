@@ -9,25 +9,25 @@
     <title>Blog Posts</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Blog Posts</h1>
-        <a href="/new-post" class="btn btn-primary mb-4">Create a New Post</a>
-        <div class="post-list">
-            <% if (posts.length === 0) { %>
-                <p>No posts available. <a href="/new-post">Create a new post</a></p>
-            <% } else { %>
-                <% posts.forEach((post, index) => { %>
-                    <div class="post-item">
-                        <img src="/assets/<%= post.image %>" alt="Post Image">
-                        <div class="post-content">
-                            <h3><%= post.title %></h3>
-                            <p><%= post.content.substring(0, 100) %>...</p>
-                            <a href="/post/<%= post.id %>" class="btn btn-primary">Read more</a>
-                        </div>
-                    </div>
-                <% }) %>
-            <% } %>
-        </div>
+<div class="container mt-4">
+    <h1>Blog Posts</h1>
+    <a href="/new-post" class="btn btn-primary mb-4">Create a New Post</a>
+    <div class="post-list">
+        <% posts.forEach((post, index) => { %>
+            <div class="post-item">
+                <img src="/assets/<%= images[index % images.length] %>" alt="Post Image">
+                <div class="post-content">
+                    <h3><%= post.title %></h3>
+                    <p><%= post.content.substring(0, 100) %>...</p>
+                    <a href="/post/<%= post.id %>" class="btn btn-primary">Read more</a>
+                    <a href="/edit-post/<%= post.id %>" class="btn btn-secondary">Edit</a>
+                    <form action="/delete-post/<%= post.id %>" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        <% }) %>
     </div>
+</div>
 </body>
 </html>

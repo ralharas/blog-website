@@ -6,29 +6,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/new-posts.css">
-    <title>Create New Post</title>
+    <title><%= post ? "Edit Post" : "Create New Post" %></title>
 </head>
 <body>
 <div class="new-post-container">
     <header class="new-post-header">
         <h1>Blog</h1>
-        <a href="/signup" class="sign-up-btn">Sign up</a> <!-- Adjusted to use a link for navigation -->
+        <a href="/signup" class="sign-up-btn">Sign up</a>
     </header>
     <div class="new-post-content">
-        <form action="/new-post" method="POST">
-            <input type="text" name="title" class="post-title" placeholder="Title" required>
+        <form action="<%= post ? `/edit-post/${post.id}` : '/new-post' %>" method="POST">
+            <% if (post) { %>
+                <input type="hidden" name="id" value="<%= post.id %>">
+            <% } %>
+            <input type="text" name="title" class="post-title" placeholder="Title" value="<%= post ? post.title : '' %>" required>
             <div class="post-options">
                 <button type="button" class="post-option-btn">Add tags (5 max)</button>
                 <button type="button" class="post-option-btn">Set feature image</button>
                 <button type="button" class="post-option-btn">Add canonical link</button>
             </div>
-            <textarea name="content" class="post-description" placeholder="Write your description here..." required></textarea>
+            <textarea name="description" class="post-description" placeholder="Write your description here..." required><%= post ? post.description : '' %></textarea>
             <div class="post-body">
                 <div class="post-author"></div>
-                <textarea class="post-content" placeholder="Write your post here..."></textarea>
+                <textarea name="content" class="post-content" placeholder="Write your post here..." required><%= post ? post.content : '' %></textarea>
             </div>
             <div class="post-footer">
-                <button type="submit" class="publish-btn">Publish</button>
+                <button type="submit" class="publish-btn"><%= post ? "Update" : "Publish" %></button>
                 <span class="word-count">Word count: 0</span>
             </div>
         </form>
