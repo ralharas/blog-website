@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import indexRouter from './routes/index.js';
 import session from 'express-session';
 import passport from './routes/auth.js';  
+import env from "dotenv";
 
 const app = express();
 const port = 3000;
@@ -20,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.use(session({
-    secret: "TOPSECRET",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
 }));

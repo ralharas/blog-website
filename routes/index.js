@@ -3,6 +3,8 @@ import db from '../db/db.js';
 import bcrypt from 'bcryptjs';
 import session from 'express-session';
 import passport from "passport";
+import env from "dotenv";
+
 
 const router = express.Router();
 const saltRounds = 10;

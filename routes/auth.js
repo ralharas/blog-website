@@ -2,6 +2,7 @@ import passport from 'passport';
 import passportLocal, { Strategy } from 'passport-local';
 import db from '../db/db.js'; 
 import bcrypt from 'bcryptjs';  
+import env from "dotenv";
 
 const LocalStrategy = passportLocal.Strategy;
 
