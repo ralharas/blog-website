@@ -11,15 +11,28 @@ let postIdCounter = 1;
 const images = ['beach.jpg', 'img1.jpg', 'img3.jpg', 'img4.jpg', 'img5.jpg', 'img6.jpg'];
 
 router.get('/', (req, res) => {
-    res.render('index', { posts, images });
+    res.render('index', { posts, 
+        images, 
+        user: req.user });
 });
 
 router.get("/explore", (req, res) => {
-    res.render("explore");
+    res.render("explore", {user: req.user});
 });
 
 router.get("/new-post", (req, res) => {
-    res.render("new-post", { post: null });
+    if(req.isAuthenticated()) {
+        res.render("new-post", { post: null,
+        user: req.user });
+    }
+    else{
+        res.send(`<h1> You must login to Create New Posts</h1>
+        <script> 
+            setTimeout(function() {
+                window.location.href = '/signup';
+            }, 3000);
+            </script>`)
+    }
 });
 
 router.post("/new-post", (req, res) => {
@@ -40,7 +53,7 @@ router.post("/new-post", (req, res) => {
             <h1>You Must Login to Create New Posts</h1>
             <script> 
             setTimeout(function() {
-                window.location.href = '/signin';
+                window.location.href = '/signup';
             }, 3000);
             </script>
         `);
@@ -51,7 +64,8 @@ router.post("/new-post", (req, res) => {
 router.get("/edit-post/:id", (req, res) => {
     const post = posts.find(p => p.id == req.params.id);
     if (post) {
-        res.render("new-post", { post });
+        res.render("new-post", { post, 
+            user: req.user });
     } else {
         res.status(404).send("Post not found");
     }
@@ -78,19 +92,28 @@ router.post("/delete-post/:id", (req, res) => {
 router.get("/post/:id", (req, res) => {
     const post = posts.find(p => p.id == req.params.id);
     if (post) {
-        res.render("post", { post });
+        res.render("post", { post, user: req.user });
     } else {
         res.status(404).send("Post not found");
     }
 });
 
 router.get("/signin", (req, res) => {
-    res.render("signin");
+    res.render("signin", {user: req.user});
 });
 
 router.get("/signup", (req, res) => {
-    res.render("signup");
+    res.render("signup", {user: req.user});
 });
+
+router.get('/logout', (req, res, next) => {
+    req.logout((err) => {
+        if (err) { return next(err); } 
+        res.redirect('/');
+    });
+});
+
+
 
 router.post("/signin-user", (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
@@ -116,7 +139,7 @@ router.post("/signin-user", (req, res, next) => {
                 `);
             }
             return res.send(`
-                <h1>User logged in, redirecting to home in 5 seconds</h1>
+                <h1>User logged in, redirecting to home </h1>
                 <script>
                     setTimeout(function(){
                         window.location.href = '/'
@@ -153,8 +176,8 @@ router.post("/signup-user", async (req, res) => {
                         <h1>Error registering user, please contact support for assistance</h1>
                         <script>
                             setTimeout(function() {
-                                window.location.href = '/signin';
-                            }, 3000);
+                                window.location.href = '/signup';
+                            }, 1000);
                         </script>
                     `);
                 } else {
