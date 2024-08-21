@@ -69,3 +69,11 @@ body {
 .signin-link:hover {
     background-color: #333;
 }
+
+.google-signin {
+    margin-top: 40px; 
+}
+
+.google-signup {
+    margin-top: 40px; 
+}

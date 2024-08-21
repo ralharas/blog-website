@@ -37,6 +37,11 @@ router.get("/new-post", (req, res) => {
     }
 });
 
+router.get("/auth/google", passport.authenticate("google", {
+    scope: ["profile", "email"],
+})
+);
+
 router.post("/new-post", (req, res) => {
     console.log("Is user authenticated?", req.isAuthenticated());
     if (req.isAuthenticated()) {  

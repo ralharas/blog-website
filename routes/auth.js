@@ -2,8 +2,7 @@ import passport from 'passport';
 import passportLocal, { Strategy } from 'passport-local';
 import db from '../db/db.js'; 
 import bcrypt from 'bcryptjs';  
-import env from "dotenv";
-
+import GoogleStrategy from "passport-google-oauth2"
 const LocalStrategy = passportLocal.Strategy;
 
 passport.use(new LocalStrategy(
@@ -30,6 +29,18 @@ passport.use(new LocalStrategy(
         });
     }
 ));
+
+passport.use("google", 
+    new GoogleStrategy({
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: "http://localhost:300/auth/google/secrets",
+        userProfileURL: "https//www.googleleapis.com/oauth2/v3/userinfo",
+
+    }, async(accessTokem, refreshToken, profile, cb)=> {
+        console.log(profile);
+    })
+);
 
 passport.serializeUser((user, done) => {
     done(null, user.id);

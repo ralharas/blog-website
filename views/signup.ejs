@@ -6,22 +6,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/signin.css">
-    <title>Login</title>
+    <title>Sign Up</title>
 </head>
 <body>
-<form action = "/signup-user" method = "POST">
-<div class="signin-container">
-    <div class="signin-text">
-        <h1>Sign Up</h1>
-        <div class="signin-bar">
-            <input type="text" placeholder="Username" name = "username" required>
-            <input type="password" placeholder="Password" name = "password" required>
-            <input type="email" placeholder="Email" name = "email" required>
-            <button type="submit">  Register </button>
-            <a href="/signin" class="signin-link">Or Sign in here</a>
-        </form>
+    <form action="/signup-user" method="POST">
+        <div class="signin-container">
+            <div class="signin-text">
+                <h1>Sign Up</h1>
+                <div class="signin-bar">
+                    <input type="text" placeholder="Username" name="username" required>
+                    <input type="password" placeholder="Password" name="password" required>
+                    <input type="email" placeholder="Email" name="email" required>
+                    <button type="submit">Register</button>
+                    <a href="/signin" class="signin-link">Or Sign in here</a>
+                </div>
+                <div class="google-signup">
+                    <a href="/auth/google" class="btn btn-google">Sign Up with Google</a>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    </form>
 </body>
 </html>

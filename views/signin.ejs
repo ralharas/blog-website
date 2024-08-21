@@ -9,18 +9,21 @@
     <title>Login</title>
 </head>
 <body>
-    <form action = "/signin-user" method = "POST">
-<div class="signin-container">
-    <div class="signin-text">
-        <h1>Login</h1>
-        <div class="signin-bar">
-            <input type="text" placeholder="Username" name = "username" required>
-            <input type="password" placeholder="Password" name = "password" required>
-            <button type="submit">Login</button>
-            <a href="/signup" class="signin-link">New User? Sign up here</a>
-        </form>
+    <form action="/signin-user" method="POST">
+        <div class="signin-container">
+            <div class="signin-text">
+                <h1>Login</h1>
+                <div class="signin-bar">
+                    <input type="text" placeholder="Username" name="username" required>
+                    <input type="password" placeholder="Password" name="password" required>
+                    <button type="submit">Login</button>
+                    <a href="/signup" class="signin-link">New User? Sign up here</a>
+                </div>
+                <div class="google-signin">
+                    <a href="/auth/google" class="btn btn-google">Sign In with Google</a>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    </form>
 </body>
 </html>
