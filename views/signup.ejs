@@ -9,15 +9,17 @@
     <title>Login</title>
 </head>
 <body>
+<form action = "/signup-user" method = "POST">
 <div class="signin-container">
     <div class="signin-text">
         <h1>Sign Up</h1>
         <div class="signin-bar">
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="Password">
-            <input type="email" placeholder="Email">
-            <button>Register</button>
+            <input type="text" placeholder="Username" name = "username">
+            <input type="password" placeholder="Password" name = "password">
+            <input type="email" placeholder="Email" name = "email">
+            <button type="submit">  Register </button>
             <a href="/signin" class="signin-link">Or Sign in here</a>
+        </form>
         </div>
     </div>
 </div>
